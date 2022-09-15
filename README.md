@@ -117,8 +117,8 @@ Dari output terlihat bahwa:
     
   - Multivariate Analysis
     <br>
-    <image src='https://github.com/hamzafrd/Machine-Learning-terapan/blob/03b5a313282b61bf6c154e58c97b66aea63083e9/images/multivariat.png' width= 500/>
-    <br> Terlihat bahwa numerical features memiliki korelasi yang tinggi.
+    <image src='https://github.com/hamzafrd/Machine-Learning-terapan/blob/fb430770e2f724003677ab5d98f26c0d57394838/images/multipredi.png' width= 500/>
+    <br> Terlihat bahwa numerical features memiliki korelasi yang tinggi kecuali pada fitur volume yang menunjukan pesebaran data yang tidak menentu.
     
   - Mengevaluasi Skor Korelasi dengan fungsi curr()
     <br>
