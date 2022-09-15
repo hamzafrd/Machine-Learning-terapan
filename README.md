@@ -1,6 +1,6 @@
 # Laporan Proyek Machine Learning - Hamza Firdaus
 ## Domain Proyek
-
+### Dokumentasi ini merupakan bagian dari dan dapat diakses melalui : https://github.com/hamzafrd/Machine-Learning-terapan
 Domain proyek yang dipilih dalam proyek machine learning ini adalah mengenai keuangan dan cryptocurrency dengan judul proyek _"Predictive Analysis - Crypto Currency Historical Prices (DogeCoin)"_
 
 ### Latar Belakang
@@ -196,9 +196,7 @@ Untuk evaluasi, metrik yang digunakan adalah *mean squared error (mse)*. Dimana 
 - yi = nilai sebenarnya
 - yi^ = nilai prediksi
 
-Sebelum menggunakan metrik MSE, harus dilakukan scaling fitur numerik terlebih dahulu pada data uji untuk menghindari kebocoran data. Setelah melakukan evaluasi berdasarkan metrik MSE dan tingkat akurasi prediksi pada model, penulis mencoba memprediksi harga untuk 30 hari ke depan dengan model KNN dan hasilnya cukup memuaskan karena nilainya tidak jauh berbeda dengan data sebelumnya.
-
 Berikut ini perbandingan grafik metrik MSE pada keempat model:
 <br>
 <image src='https://github.com/hamzafrd/Machine-Learning-terapan/blob/03b5a313282b61bf6c154e58c97b66aea63083e9/images/plottingfinal.png' width= 500/>
-<br> Untuk proyek kali ini model SVM merupakan model yang berjalan dengan performa paling optimal sehingga dapat disimpulkan bahwa model dapat memprediksi harga dari pasar dogecoin dari data tes dengan baik. Sehingga kedepannya dapat membantu para trader dalam melakukan keputusan pembelian/penjualan pasar.
+<br> Untuk proyek kali ini model SVM merupakan model yang berjalan dengan performa paling optimal sehingga dapat disimpulkan bahwa model dapat memprediksi harga dari pasar dogecoin dari data test dengan baik. Sehingga kedepannya dapat membantu para trader dalam melakukan keputusan pembelian/penjualan pasar.
