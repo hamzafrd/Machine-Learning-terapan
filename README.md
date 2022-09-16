@@ -257,7 +257,7 @@ Berikut ini perbandingan grafik metrik MSE pada keempat model:
 
 ![plot](https://github.com/hamzafrd/Machine-Learning-terapan/raw/main/images/plottingfinal.png)
 
-Untuk proyek kali ini model SVM merupakan model yang berjalan dengan performa paling optimsehingga dapat disimpulkan bahwa model dapat memprediksi harga dari pasar dogecoin dari data test dengan baik. Sehingga kedepannya dapat membantu para trader dalam melakukan keputusan pembelian/penjualan pasar.
+Untuk proyek kali ini model SVM merupakan model yang berjalan dengan performa paling optimal sehingga dapat disimpulkan bahwa model dapat memprediksi harga dari pasar dogecoin dari data test dengan baik. Sehingga kedepannya dapat membantu para trader dalam melakukan keputusan pembelian/penjualan pasar.
 
 ## Referensi
 
