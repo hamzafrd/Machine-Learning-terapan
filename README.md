@@ -96,22 +96,21 @@ Dari output terlihat bahwa:
 Berikut merupakan visualisasi data yang menunjukkan sebaran/distribusi data pada setiap fitur-fitur numerik (`Volume, Marketcap, High`) sebagai example :
 
 ### Mengidentifikasi Missing Value dan Outlier
-
-- Fitur High
+- Fitur High  
 ![high_fitur](https://github.com/hamzafrd/Machine-Learning-terapan/raw/main/images/high.png)
-- Fitur marketplace
+- Fitur marketplace  
 ![market_place](https://github.com/hamzafrd/Machine-Learning-terapan/blob/main/images/marketplace.png?raw=true)
-- Fitur  volume
+- Fitur  volume  
 ![market_place](https://github.com/hamzafrd/Machine-Learning-terapan/blob/main/images/volume.png?raw=true)  
 
 Terlihat jika di atas banyak terdapat outlier pada setiap variabel, lalu untuk mengatasinya nantinya penulis akan menerapkan batas bawah dan batas atas menggunakan metode IQR
 
 Setelah beberapa kali melakukan IQR, berikut hasilnya :
-- Fitur MarketPlace
+- Fitur MarketPlace  
 ![high_fitur](https://github.com/hamzafrd/Machine-Learning-terapan/raw/main/images/aftermarket.png)
-- Fitur High
+- Fitur High  
 ![high_fitur](https://github.com/hamzafrd/Machine-Learning-terapan/raw/main/images/afterhigh.png)
-- Fitur  Close
+- Fitur  Close  
 ![high_fitur](https://github.com/hamzafrd/Machine-Learning-terapan/raw/main/images/afterclose.png)
 
  ### Univariate Analysis
@@ -125,7 +124,7 @@ Terlihat pada grafik bahwa semua data cenderung distribusi nilainya membentuk se
 ![multivariate](https://github.com/hamzafrd/Machine-Learning-terapan/raw/main/images/multipredi.png)
 Terlihat bahwa numerical features memiliki korelasi yang tinggi, kecuali pada fitur volume yang menunjukkan pesebaran data yang tidak menentu.
 #### Mengevaluasi Skor Korelasi dengan fungsi curr()
-![multivariate](https://github.com/hamzafrd/Machine-Learning-terapan/raw/main/images/korelasi.png)
+![multivariate](https://github.com/hamzafrd/Machine-Learning-terapan/raw/main/images/korelasi.png)  
     Terlihat pada matriks korelasi di atas dapat disimpulkan bahwa hampir semua variabel memiliki keterikatan dan korelasi yang kuat antarvariabel lainnya, di mana nilai korelasi antarvariabel bernilai lebih dari 0.9 atau mendekati 1.
 
  Volume memiliki korelasi yang sangat lemah dengan yang lain, artinya jumlah transaksi (volume) tidak ada hubungannya dengan fitur lain dan bisa di drop. 
