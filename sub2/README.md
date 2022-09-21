@@ -6,7 +6,7 @@
 
 ---
 
-Dokumentasi ini merupakan bagian dari dan dapat diakses melalui : https://github.com/hamzafrd/Machine-Learning-terapan
+Dokumentasi ini merupakan bagian dari dan dapat diakses melalui : https://github.com/hamzafrd/Machine-Learning-terapan/tree/main/sub2
 Domain proyek yang dipilih dalam proyek machine learning ini adalah mengenai edukasi dan hobi dengan judul proyek _"Sistem Rekomendasi - Book Recomendation"_
 
 ### Latar Belakang
