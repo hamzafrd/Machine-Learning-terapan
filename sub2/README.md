@@ -47,7 +47,7 @@ Solusi yang dapat dilakukan untuk memenuhi tujuan dari proyek ini di antaranya:
   - Lakukan _dropping_ terhadap data yang tidak digunakan.
 
 - **Pembangunan Model**.
-  - Membangung sistem rekomendasi menggunakan 2 teknik yang umum digunakan yaitu: Content-Based Filtering dan Collaborative Filtering
+  - Membangung sistem rekomendasi menggunakan teknik yang umum digunakan yaitu: Content-Based Filtering
 
 ## **Data Understanding**
 
@@ -77,9 +77,10 @@ Pada proyek ini kita akan menggunakan 2 dataset yaitu _Books.csv_ dan _Ratings.c
 - `location` : lokasi user
 - `age` : umur user
 
-Dari output terlihat bahwa:
+Dari output tersebut dapat di deskripsikan sebagai berikut:
 
-- Terdapat 5 kolom dengan tipe object, yaitu: `ISBN`, `user_id`,`date`.
+- Terdapat 8 kolom dengan tipe object, yaitu: _`ISBN`, `year`,  `publisher`, `title`, `author_, `location` dan `rating`_.  
+- terdapat tipe 2 kolom tipe data lainnya yaitu int64 untuk _`user id`_ dan float64 untuk _`age`_ 
 - Jumlah untuk dataset rating yaitu sebanyak 1149780 dan jumlah dataset books yaitu sebanyak 271360.
 - author merupakan target fitur kali ini.
 
@@ -96,7 +97,7 @@ Dari output terlihat bahwa:
   _SUM rating_ dibuat untuk menghitung banyaknya rating yang diberikan oleh user pada setiap buku.
 
 - _Merge rating and Books_  
-  Kedua dataset "rating" dan "books" yang telah di proses digabung melalui tabel _ISBN_ menggunakan _`merge` dan `on`_.
+  Kedua dataset _`rating`_ dan _`books`_ yang telah di proses digabung melalui tabel _ISBN_ menggunakan _`merge`_.
 
 ## Data Preparation
 
@@ -105,7 +106,7 @@ Dari output terlihat bahwa:
 ### _missing value_ dan _duplicate value_
 
 - Mengatasi _missing value_  
-  Pada dataset books terdapat 3 kolom yang memiliki missing value yaitu _SUM rating, author dan \_publihser_. Untuk itu penuliskan melakukan drop menggunakan `dropna()`. Adapun dataset rating tidak memiliki _missing value_.
+  Pada dataset books terdapat 3 kolom yang memiliki missing value yaitu _SUM rating, author dan _publiser_. Untuk itu penuliskan melakukan drop menggunakan `dropna()`. Adapun dataset rating tidak memiliki _missing value_.
 
 - Mengatasi _duplicate value_  
   Pada tahap ini penulis menghapus _duplicate value_ pada ISBN dan title.
@@ -120,7 +121,8 @@ Dari output terlihat bahwa:
 
 ### Menghapus fitur tidak signifikan
 
-Pada proyek ini penulis menggunakan fitur _'title', 'author', dan 'publisher'_, sehingga fitur lain _'ISBN', 'Rating SUM', 'year'_ bisa dihapus.
+Pada proyek ini penulis menggunakan fitur _'title', 'author', dan 'publisher'_, sehingga fitur lain _'ISBN', 'Rating SUM', 'year'_ bisa dihapus. sehingga hasil tabel menjadi sebagai berikut :  
+<img width="440" alt="image" src="https://user-images.githubusercontent.com/96603987/191613692-301c44e5-9b50-4afe-a5c1-5f105a857820.png">
 
 ### Modeling
 
