@@ -146,7 +146,7 @@ Pada proyek ini penulis menggunakan fitur _'title', 'author', dan 'publisher'_, 
 
 ## Modeling
 
-Model yang akan digunakan proyek kali ini yaitu menggunakan pendekatan _content based filtering_ menggunakan TfidfVectorizer. Hal pertama yang dilakukan adalah melakukan _`fit()`_ data menggunakan _TfidfVectorizer_ yang selanjutnya di transform menggunakan metode _`fit_transform()`_. Jika sudah, lakukan _densing_ pada data menggunakan metode _`to.dense()`_ untuk menghasilkan vektor tf-idf dalam bentuk matriks. Sekarang, kita akan menghitung derajat kesamaan (similarity degree) antar restoran dengan teknik _cosine similarity_ menggunakan fungsi `_cosine_similarity(tfidf_matrix)_` dengan begitu kita dapat merekomendasikan daftar author buku mana saja yang mirip dengan author yang sebelumnya pernah dibaca pengguna.
+Model yang akan digunakan proyek kali ini yaitu menggunakan pendekatan _content based filtering_ menggunakan TfidfVectorizer. Hal pertama yang dilakukan adalah melakukan _`fit()`_ data menggunakan _TfidfVectorizer_ yang selanjutnya di transform menggunakan metode _`fit_transform()`_. Jika sudah, lakukan _densing_ pada data menggunakan metode _`to.dense()`_ untuk menghasilkan vektor tf-idf dalam bentuk matriks. Sekarang, kita akan menghitung derajat kesamaan (similarity degree) antar restoran dengan teknik _cosine similarity_ menggunakan fungsi _`cosine_similarity(tfidf_matrix)`_ dengan begitu kita dapat merekomendasikan daftar author buku mana saja yang mirip dengan author yang sebelumnya pernah dibaca pengguna.
 
 ## _Content Based Filtering_
 
