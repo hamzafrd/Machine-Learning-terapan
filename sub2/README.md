@@ -30,8 +30,8 @@ Berdasarkan pada latar belakang di atas, permasalahan yang dapat diselesaikan pa
 
 Tujuan dibuatnya proyek ini adalah sebagai berikut:
 
-- Melakukan analisa pada data buku menggunakan model yang optimal.
-- Membangun _machine learning_ untuk merekomendasikan daftar buku menggunakan _content based filtering_
+- Mengetahui cara merekomendasikan buku yang baik dengan melakukan analisa pada data buku menggunakan model yang optimal.
+- Membangun model  _machine learning_ untuk merekomendasikan daftar buku menggunakan _content based filtering_
 
 ### Solution Statement
 
@@ -68,19 +68,22 @@ Dataset yang digunakan pada proyek ini, yaitu dataset lengkap dengan title dan j
 
 Pada proyek ini kita akan menggunakan 2 dataset yaitu _Books.csv_ dan _Ratings.csv_ yang memiliki data sebagai berikut :
 
-- `ISBN`: Kode unik buku
-- `user_id`: Kode unik user.
-- `title`: Judul Buku.
-- `author`: Pengarang buku.
-- `rating`: Penilaian dari user.
-- `year`: Tahun penerbitan buku.
-- `location` : lokasi user
-- `age` : umur user
+- **_Books.csv_**  
+  - `ISBN`: Kode unik buku
+  - `title`: Judul Buku.
+  - `year`: Tahun penerbitan buku.
+  - `publibsher` : Penerbit buku.
+  - `author`: Pengarang buku.
+
+- **_Ratings.csv_**  
+  - `user_id`: Kode unik user.
+  - `ISBN`: Kode unik buku
+  - `rating`: Penilaian dari user.
 
 Dari output tersebut dapat di deskripsikan sebagai berikut:
 
-- Terdapat 8 kolom dengan tipe object, yaitu: _`ISBN`, `year`,  `publisher`, `title`, `author_, `location` dan `rating`_.  
-- terdapat tipe 2 kolom tipe data lainnya yaitu int64 untuk _`user id`_ dan float64 untuk _`age`_ 
+- Terdapat 6 kolom dengan tipe object, yaitu: _`ISBN`, `year`,  `publisher`, `title`, `author`_, dan _`rating`_.  
+- terdapat 1 kolom tipe data lainnya yaitu int64 yang terdapat pada _`user id`_.
 - Jumlah untuk dataset rating yaitu sebanyak 1149780 dan jumlah dataset books yaitu sebanyak 271360.
 - author merupakan target fitur kali ini.
 
@@ -109,11 +112,24 @@ Dari output tersebut dapat di deskripsikan sebagai berikut:
   Pada dataset books terdapat 3 kolom yang memiliki missing value yaitu _SUM rating, author dan _publiser_. Untuk itu penuliskan melakukan drop menggunakan `dropna()`. Adapun dataset rating tidak memiliki _missing value_.
 
 - Mengatasi _duplicate value_  
-  Pada tahap ini penulis menghapus _duplicate value_ pada ISBN dan title.
+  Pada tahap ini penulis menghapus _duplicate value_ pada ISBN dan title dengan metode _`drop_duplicate()`_.
+  
 
 ### Drop fitur tidak signifikan
 
 - Pada tahap ini penulis menghapus beberapa fitur yang tidak memberikan informasi terkait buku seperti, _'year', 'location', dan 'age'_.
+
+### Normalisasi dan splitting
+
+- Normalisasi
+  Normalisasi dilakukan menggunakan _`MinMaxScaler`_. Pada proyek ini fitur yang di normalisasi adalah fitur _`rating`_. Berikut adalah tahapannya :  
+  - Ambil values yang ada pada fitur rating menggunnakan _`['rating'].values`_ dan masukan dalam sebuah variable.  
+  - Reshape variable yang ada dengan _`reshape(-1,1)`_  
+  - lakukan transform menggunakan _`MinMaxScaler`_ untuk melakukan normalisasi.
+  - 
+ -train and test split
+  Pada proyek kali ini proses split ini dilakukan dengan cara membagi data dengan perbandingan 9:1 yang mana 90% untuk Train dan 10% untuk test.
+  Data yang ada pada train and test adalah data yang sudah di normalisasi.
 
 ## **Content Based Filtering**
 
@@ -122,38 +138,53 @@ Dari output tersebut dapat di deskripsikan sebagai berikut:
 ### Menghapus fitur tidak signifikan
 
 Pada proyek ini penulis menggunakan fitur _'title', 'author', dan 'publisher'_, sehingga fitur lain _'ISBN', 'Rating SUM', 'year'_ bisa dihapus. sehingga hasil tabel menjadi sebagai berikut :  
-<img width="440" alt="image" src="https://user-images.githubusercontent.com/96603987/191613692-301c44e5-9b50-4afe-a5c1-5f105a857820.png">
+| title                | author               | publisher               |
+| -------------------- | -------------------- | ----------------------- |
+|The Kitchen God's Wife|Amy Tan	              | Putnam Pub Group        |
+|The Testament	       |John Grisham	        | Dell                    |
+| Beloved (Plume Contemporary Fiction)  |	Toni Morrison|	Plume         |
 
-### Modeling
+## Modeling
 
-Model yang akan digunakan proyek kali ini yaitu menggunakan pendekatan _content based filtering_ menggunakan TfidfVectorizer.
+Model yang akan digunakan proyek kali ini yaitu menggunakan pendekatan _content based filtering_ menggunakan TfidfVectorizer. Hal pertama yang dilakukan adalah melakukan _`fit()`_ data menggunakan _TfidfVectorizer_ yang selanjutnya di transform menggunakan metode _`fit_transform()`_. Jika sudah, lakukan _densing_ pada data menggunakan metode _`to.dense()`_ untuk menghasilkan vektor tf-idf dalam bentuk matriks. Sekarang, kita akan menghitung derajat kesamaan (similarity degree) antar restoran dengan teknik _cosine similarity_ menggunakan fungsi `_cosine_similarity(tfidf_matrix)_` dengan begitu kita dapat merekomendasikan daftar author buku mana saja yang mirip dengan author yang sebelumnya pernah dibaca pengguna.
 
-#### _Content Based Filtering_
+## _Content Based Filtering_
 
 _Content-based filtering_ adalah pemfilteran berbasis konten di mana sistem ini memberikan rekomendasi untuk menebak apa yang disukai pengguna berdasarkan aktivitas pengguna tersebut. Tujuan dari _content based filtering_ adalah untuk memprediksi persamaan sejumlah informasi yang didapat dari pengguna. Sebagai contoh, seorang pembaca sedang membaca buku tentang saham. Platform baca buku online secara sistem akan merekomendasikan si pengguna untuk membaca buku lain yang berhubungan dengan saham.
 
 _Content based filtering_ menggunakan konsep perhitungan _vector_, [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf), dan [Cosine Similarity](https://en.wikipedia.org/wiki/Cosine_similarity) sehingga data yang ada di dalam dataset terkonversi menjadi vektor.
 
-###### Kelebihan
+### Kelebihan
 
 - Dapat merekomendasikan item khusus
 - Tidak memerlukan data apapun terhadap pengguna
 - Semakin banyak informasi yang diberikan pengguna, semakin baik akurasi sistem rekomendasi
 
-###### Kelemahan
+### Kelemahan
 
 - Kelemahan utama pada teknik ini yaitu sistem tidak dapat memberikan rekomendasi apabila belum adanya penilaian pada object yang di rekomendasikan.
 - Data yang kurang kurat ketika penilaian pada satu data terlalu sedikit
 
-###### Result
+### Result
 
 Untuk mendapatkan rekomendasi, kita menggunakan buku yang berjudul "_Birthright_" dengan author "_Nora Roberts_". Jika sistem rekomendasi berjalan dengan baik, maka kita akan mendapatkan hasil buku dengan author yang sama yaitu "_Nora Roberts_". Berikut adalah hasilnya :
 
-<img width="397" alt="image" src="https://user-images.githubusercontent.com/96603987/191606905-1bf9bd31-7d57-44db-aef5-165d7f4f3f6f.png">
+| title                | author               | publisher               |
+| -------------------- | -------------------- | ----------------------- |
+|Face the Fire (Three Sisters Island Trilogy) |	Nora Roberts	|Jove Books|
+|	Key of Light (Key Trilogy (Paperback))      |	Nora Roberts|	Jove Books|
+|	Truly, Madly Manhattan                      |	Nora Roberts	|Silhouette|
+|	Engaging The Enemy                          |	Nora Roberts	|Silhouette|
+|	Key of Valor (Roberts, Nora. Key Trilogy, 3.)	|Nora Roberts|	Jove Pubns|
+|	Sanctuary                                   |	Nora Roberts|	Jove Books|
+|	Heaven and Earth (Three Sisters Island Trilogy)|	Nora Roberts|	Jove Books|
+|	Heart of the Sea (Irish Trilogy)            |	Nora Roberts|	Jove Books|
+|	Macgregor Brides (Macgregors)               |	Nora Roberts|	Silhouette|
+|	Sea Swept (Quinn Brothers (Paperback))      |	Nora Roberts|	Jove Books|
 
 Dapat kita lihat bahwa buku yang muncul memiliki author yang sama.
 
-##### Evaluation
+## Evaluation
 
 ---
 
